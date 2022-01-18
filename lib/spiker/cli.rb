@@ -14,13 +14,13 @@ module Spiker
       puts "Spiker version #{Spiker::VERSION}"
     end
 
-    desc "simple", "Spike in a single file"
+    desc "simple NAME", "Spike in a single file"
     method_option :name, type: :string, aliases: "-n", desc: "Name of the spike"
     def simple(name)
       Spiker::Generators::Simple.start([name])
     end
 
-    desc "multiple", "Spike over multiple files"
+    desc "multiple NAME", "Spike over multiple files"
     method_option :name, type: :string, aliases: "-n", desc: "Name of the spike"
     def multiple(name)
       Spiker::Generators::Multiple.start([name])
