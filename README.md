@@ -1,8 +1,6 @@
 # Spiker
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/spiker`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Spiker helps you validate your ideas under test.  It can also be a basic educational tool, giving the learner a minimal framework to start writing and testing the Ruby code.
 
 ## Installation
 
@@ -22,7 +20,41 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In the terminal, change directory to someplace where you want to collect your spikes:
+
+    $ cd ~/spikes
+
+Then, create a new spike:
+
+    $ spiker simple my_spike
+    $ cd my_spike
+
+Using the "simple" formula, Spiker will create an `app.rb` file, a `Gemfile`, and a `Guardfile`.  The `app.rb` file will contain boilerplate for both Minitest and a Ruby class in the same file:  
+
+```ruby
+require 'minitest'
+require 'minitest/autorun'
+require 'minitest/reporters'
+
+Minitest::Reporters.use!
+
+class MySpikeTest < Minitest::Test
+  def test_that_it_works
+    assert true
+  end
+end
+
+class MySpike
+  attr_accessor :name
+  def initialize(name:)
+    @name = name
+  end
+end
+```
+
+From here, the user should be able to start Guard and immediately begin development in a red-green fashion.
+
+The "multiple" option is not implemented yet, but is intended to flesh out a more complex spike that includes a tests directory and `test_helper.rb`, a `lib` directory, README.md, etc.
 
 ## Development
 

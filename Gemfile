@@ -10,9 +10,9 @@ gem "rake", "~> 13.0"
 gem "minitest", "~> 5.0"
 gem "minitest-reporters", "~> 1.0"
 
-gem "guard"
-gem "guard-minitest"
+gem "guard", "~> 2.18.0"
+gem "guard-minitest", "~> 2.4.0"
 
-gem "rubocop", "~> 0.80"
+gem "rubocop", "~> 0.93.0"
 
-gem "thor", "~> 0.19"
+gem "thor", "~> 0.20.0"

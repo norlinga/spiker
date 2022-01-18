@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require "thor"
-require 'spiker/generators/simple'
-require 'spiker/generators/multiple'
+require_relative 'version'
+require_relative 'generators/simple'
+require_relative 'generators/multiple'
 
 module Spiker
   # Accept options "single" and "multiple"
