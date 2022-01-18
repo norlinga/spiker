@@ -8,3 +8,10 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'lib/spiker/generators/templates/**'
+    - 'exe/spiker'
+    - 'spiker.gemspec'
