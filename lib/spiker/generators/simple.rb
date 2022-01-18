@@ -25,6 +25,12 @@ module Spiker
       def create_gem_file
         template('simple_gemfile.rb', "#{name}/Gemfile")
       end
+
+      def run_bundler
+        inside(name) do
+          run('bundle install')
+        end
+      end
     end
   end
 end

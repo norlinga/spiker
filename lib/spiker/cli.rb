@@ -5,7 +5,7 @@ require 'spiker/generators/simple'
 require 'spiker/generators/multiple'
 
 module Spiker
-  # Accept options "--single" and "--multiple"
+  # Accept options "single" and "multiple"
   # for single file spikes or multi-file spikes
   # and a name for the spike directory.  That is all
   class CLI < Thor
@@ -20,7 +20,7 @@ module Spiker
       Spiker::Generators::Simple.start([name])
     end
 
-    desc "multiple", "Spike in multiple files"
+    desc "multiple", "Spike over multiple files"
     method_option :name, type: :string, aliases: "-n", desc: "Name of the spike"
     def multiple(name)
       Spiker::Generators::Multiple.start([name])
