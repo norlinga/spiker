@@ -4,6 +4,8 @@ Spiker helps you validate your ideas under test.  It can also be a basic educati
 
 ## Installation
 
+[![Gem Version](https://badge.fury.io/rb/spiker.svg)](https://badge.fury.io/rb/spiker)
+
 Add this line to your application's Gemfile:
 
 ```ruby
