@@ -5,7 +5,7 @@ require_relative "spiker/version"
 module Spiker
   class Error < StandardError; end
 
-  def self.constantize(str)
-    str.split("_").map(&:capitalize).join
+  def self.classify(str)
+    str.split(/[^A-Za-z0-0]/).map(&:capitalize).join
   end
 end

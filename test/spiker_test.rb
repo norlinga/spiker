@@ -7,7 +7,8 @@ class SpikerTest < Minitest::Test
     refute_nil ::Spiker::VERSION
   end
 
-  def test_constantize
-    assert_equal "FooBarBaz", Spiker.constantize("foo_bar_baz")
+  def test_classify
+    assert_equal "FooBarBaz", Spiker.classify("foo_bar_baz")
+    assert_equal "FooBarBaz", Spiker.classify("foo-bar-baz")
   end
 end

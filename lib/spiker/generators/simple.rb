@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "thor/group"
+require_relative "../../spiker"
+
 module Spiker
   module Generators
     # Generates a single spike file, with supporting infrastructure.
@@ -19,7 +21,7 @@ module Spiker
       end
 
       def create_spike_file
-        opts = {name_as_class: Spiker.constantize(name)}
+        opts = {name_as_class: Spiker.classify(name)}
         template("simple_app.rb", "#{name}/app.rb", opts)
       end
 
