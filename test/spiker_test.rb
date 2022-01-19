@@ -7,7 +7,7 @@ class SpikerTest < Minitest::Test
     refute_nil ::Spiker::VERSION
   end
 
-  def test_it_does_something_useful
-    assert true
+  def test_constantize
+    assert_equal "FooBarBaz", Spiker.constantize("foo_bar_baz")
   end
 end
