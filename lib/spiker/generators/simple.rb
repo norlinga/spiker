@@ -19,7 +19,8 @@ module Spiker
       end
 
       def create_spike_file
-        template("simple_app.rb", "#{name}/app.rb")
+        opts = {name_as_class: Spiker.constantize(name)}
+        template("simple_app.rb", "#{name}/app.rb", opts)
       end
 
       def create_guard_file

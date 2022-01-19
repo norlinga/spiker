@@ -4,13 +4,13 @@ require 'minitest/reporters'
 
 Minitest::Reporters.use!
 
-class <%= Spiker.constantize(name) %>Test < Minitest::Test
+class <%= config[:name_as_class] %>Test < Minitest::Test
   def test_that_it_works
     assert true
   end
 end
 
-class <%= Spiker.constantize(name) %>
+class <%= config[:name_as_class] %>
   attr_accessor :name
   def initialize(name:)
     @name = name
