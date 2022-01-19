@@ -21,7 +21,7 @@ module Spiker
       end
 
       def create_spike_file
-        opts = {name_as_class: Spiker.classify(name)}
+        opts = { name_as_class: Spiker.classify(name) }
         template("simple_app.rb", "#{name}/app.rb", opts)
       end
 

@@ -2,6 +2,7 @@
 
 require_relative "spiker/version"
 
+# Spiker is a simple spike generator.
 module Spiker
   class Error < StandardError; end
 
