@@ -11,4 +11,10 @@ class SpikerTest < Minitest::Test
     assert_equal "FooBarBaz", Spiker.classify("foo_bar_baz")
     assert_equal "FooBarBaz", Spiker.classify("foo-bar-baz")
   end
+
+  def test_snake_case
+    assert_equal "foo_bar_baz", Spiker.snake_case("FooBarBaz")
+    assert_equal "foo_bar_baz", Spiker.snake_case("fooBarBaz")
+    assert_equal "foo_bar_baz", Spiker.snake_case("foo-bar-baz")
+  end
 end
