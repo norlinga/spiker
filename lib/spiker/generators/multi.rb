@@ -6,7 +6,7 @@ module Spiker
     # Generates multiple spike files, seperating tests from the
     # tested code.  For when the spike gets too hairy for a single
     # file.
-    class Multiple < Thor::Group
+    class Multi < Thor::Group
       include Thor::Actions
 
       argument :name, type: :string

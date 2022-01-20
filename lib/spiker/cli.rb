@@ -3,7 +3,7 @@
 require "thor"
 require_relative "version"
 require_relative "generators/simple"
-require_relative "generators/multiple"
+require_relative "generators/multi"
 
 module Spiker
   # Accept options "single" and "multiple"
@@ -21,10 +21,10 @@ module Spiker
       Spiker::Generators::Simple.start([name])
     end
 
-    desc "multiple NAME", "Spike over multiple files"
+    desc "multi NAME", "Spike over multiple files"
     method_option :name, type: :string, aliases: "-n", desc: "Name of the spike"
     def multiple(name)
-      Spiker::Generators::Multiple.start([name])
+      Spiker::Generators::Multi.start([name])
     end
   end
 end
