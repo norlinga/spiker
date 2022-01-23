@@ -56,7 +56,12 @@ end
 
 From here, the user should be able to start Guard and immediately begin development in a red-green fashion.
 
-The "multiple" option is not implemented yet, but is intended to flesh out a more complex spike that includes a tests directory and `test_helper.rb`, a `lib` directory, README.md, etc.
+The "multi" option places directories and files into a named directory, and is intended to flesh out a more complex spike that includes a tests directory and `test_helper.rb`, a `lib` directory, README.md, etc.  The overall workflow is still the same:
+
+    $ spiker multi my_spike
+    $ cd my_spike
+
+Bundle will run automatically and the user will be able to start development in a red-green fashion just the same as with the simple spike.  There is also a Rakefile provided, the Guardfile is modified from the simple version to include files in directories, and simple tests are predefined.
 
 ## Development
 
