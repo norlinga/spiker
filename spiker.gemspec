@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Properly spike your Ruby"
   spec.description   = "Scaffold for code spikes, includes simple boilerplate with Minitest + Guard to make red/green work out-of-the-box."
-  spec.homepage      = "http://github.com/norling/spiker."
+  spec.homepage      = "http://github.com/norlinga/spiker"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
