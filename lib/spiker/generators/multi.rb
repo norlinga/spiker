@@ -27,14 +27,14 @@ module Spiker
         name_in_snake_case = Spiker.snake_case(name)
         name_as_class = Spiker.classify(name)
         opts = { name_as_class: name_as_class, name_in_snake_case: name_in_snake_case }
-        template("multi_app_test.rb", "#{name}/test/#{name_in_snake_case}_test.rb", opts)
+        template("multi_app_test.rb.erb", "#{name}/test/#{name_in_snake_case}_test.rb", opts)
         template("multi_test_helper.rb", "#{name}/test/test_helper.rb", opts)
       end
 
       def create_app_files
         name_in_snake_case = Spiker.snake_case(name)
         opts = { name_as_class: Spiker.classify(name) }
-        template("multi_app.rb", "#{name}/lib/#{name_in_snake_case}.rb", opts)
+        template("multi_app.rb.erb", "#{name}/lib/#{name_in_snake_case}.rb", opts)
       end
 
       def create_guard_file
