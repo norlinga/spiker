@@ -12,6 +12,5 @@ Layout/LineLength:
 AllCops:
   NewCops: enable
   Exclude:
-    - 'lib/spiker/generators/templates/**'
     - 'exe/spiker'
     - 'spiker.gemspec'
