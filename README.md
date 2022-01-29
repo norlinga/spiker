@@ -28,6 +28,7 @@ require 'dotenv'
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/reporters'
+require 'dotenv/load'
 
 Minitest::Reporters.use!
 
