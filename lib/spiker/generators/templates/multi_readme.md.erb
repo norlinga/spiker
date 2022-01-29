@@ -8,15 +8,16 @@ This directory is the result of **someone** running the following command on a c
 
     $ gem install spiker
     $ spiker multi <%= config[:name] %>
+    $ cd <%= config[:name] %>
 
-Now that you're here, open your favorite text editor and then execute the following command:
+Once inside the spike directory, open your favorite text editor and then execute the following command:
 
     $ bundle install
     $ guard
 
 Bundler will have executed once when the spike directory was first created, but it's no problem to run it again (in case the spike directory was shared between machines / environments).
 
-You should have been greeted with a passing tests from Guard.  You are now ready to start hashing out your spike under test.
+After starting Guard you should have been greeted with passing tests.  You are now ready to start hashing out your spike under test.
 
 ## Adding to This README
 
@@ -30,7 +31,7 @@ This README could be a great place to capture findings from your spike.  Topics 
 
 ## Feel Free to Include Code
 
-Embedding code in a Markdown file is easy, using the triple backtick syntax.  The following code will be rendered as a Ruby code block:
+Embedding code in a Markdown file is easy - this README uses the triple backtick syntax.  The following code will be rendered as a Ruby code block:
 
 ```ruby
 require 'dotenv'
@@ -40,4 +41,4 @@ puts ENV["TEST_VALUE"]
 "maybe show some code in your README?".capitalize
 ```
 
-Spikes are intended to be thrown away, but that doesn't mean they have to be conducted poorly during their short lives...
+Spikes are intended to be short lived, but that's no reason to skip proper practices in your spike development.  Have fun!
