@@ -7,7 +7,7 @@ Minitest::Reporters.use!
 
 class <%= config[:name_as_class] %>Test < Minitest::Test
   def test_name
-    assert_equal "Fred", <%= config[:name_as_class %>.new(name: 'Fred').name
+    assert_equal "Fred", <%= config[:name_as_class] %>.new(name: 'Fred').name
   end
 
   def test_default_env_value
