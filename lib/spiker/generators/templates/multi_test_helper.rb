@@ -6,5 +6,6 @@ require "<%= config[:name_in_snake_case] %>"
 
 require "minitest/autorun"
 require "minitest/reporters"
+require "dotenv"
 
 Minitest::Reporters.use!

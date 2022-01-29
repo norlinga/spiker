@@ -33,6 +33,10 @@ module Spiker
         template("simple_gemfile.rb", "#{name}/Gemfile")
       end
 
+      def create_env_file
+        template("basic.env", "#{name}/.env")
+      end
+
       def run_bundler
         inside(name) do
           run("bundle install")

@@ -6,8 +6,8 @@ require_relative "generators/simple"
 require_relative "generators/multi"
 
 module Spiker
-  # Accept options "single" and "multiple"
-  # for single file spikes or multi-file spikes
+  # Accept options "single" and "multi"
+  # for single-file spikes or multi-file spikes
   # and a name for the spike directory.  That is all
   class CLI < Thor
     desc "version", "Show version"

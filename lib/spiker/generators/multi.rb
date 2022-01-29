@@ -49,6 +49,15 @@ module Spiker
         template("multi_rakefile.rb", "#{name}/Rakefile")
       end
 
+      def create_readme_file
+        opts = { name_as_class: Spiker.classify(name), name: name }
+        template("multi_readme.md.erb", "#{name}/README.md", opts)
+      end
+
+      def create_env_file
+        template("basic.env", "#{name}/.env")
+      end
+
       def run_bundler
         inside(name) do
           run("bundle install")

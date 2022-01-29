@@ -1,22 +1,12 @@
 # Spiker
 
-Spiker helps you validate your ideas under test.  It can also be a basic educational tool, giving the learner a minimal framework to start writing and testing the Ruby code.
+Spiker helps you validate your ideas under test.  It can also be a basic educational tool, giving the learner a minimal framework to start writing and testing their Ruby code.
 
 ## Installation
 
 [![Gem Version](https://badge.fury.io/rb/spiker.svg)](https://badge.fury.io/rb/spiker)
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'spiker'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
+Install it directly:
 
     $ gem install spiker
 
@@ -31,9 +21,10 @@ Then, create a new spike:
     $ spiker simple my_spike
     $ cd my_spike
 
-Using the "simple" formula, Spiker will create an `app.rb` file, a `Gemfile`, and a `Guardfile`.  The `app.rb` file will contain boilerplate for both Minitest and a Ruby class in the same file:  
+Using the "simple" formula, Spiker will create an `app.rb` file, a `Gemfile`, a `Guardfile` and an `.env` file for configuration, to be read by the `dotenv` gem.  The `app.rb` file will contain boilerplate for both Minitest and a Ruby class in the same file:  
 
 ```ruby
+require 'dotenv'
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/reporters'
@@ -41,8 +32,12 @@ require 'minitest/reporters'
 Minitest::Reporters.use!
 
 class MySpikeTest < Minitest::Test
-  def test_that_it_works
-    assert true
+  def test_name
+    assert_equal "Fred", MySpike.new(name: "Fred").name
+  end
+
+  def test_default_env_value
+    assert_equal "test", ENV["TEST_VALUE"]
   end
 end
 
