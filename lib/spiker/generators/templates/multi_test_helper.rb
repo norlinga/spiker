@@ -6,6 +6,13 @@ require "<%= config[:name_in_snake_case] %>"
 
 require "minitest/autorun"
 require "minitest/reporters"
-require "dotenv"
+require "dotenv/load"
 
 Minitest::Reporters.use!
+
+# ensure the environment is available
+class DefaultEnvironmentTest < MiniTest::Unit::TestCase
+  def test_default_environment
+    assert_equal "test", ENV["TEST_VALUE"]
+  end
+end
