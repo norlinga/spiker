@@ -24,11 +24,10 @@ Then, create a new spike:
 Using the "simple" formula, Spiker will create an `app.rb` file, a `Gemfile`, a `Guardfile` and an `.env` file for configuration, to be read by the `dotenv` gem.  The `app.rb` file will contain boilerplate for both Minitest and a Ruby class in the same file:  
 
 ```ruby
-require 'dotenv'
+require 'dotenv/load'
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/reporters'
-require 'dotenv/load'
 
 Minitest::Reporters.use!
 
