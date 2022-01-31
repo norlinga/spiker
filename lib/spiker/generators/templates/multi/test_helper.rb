@@ -11,7 +11,7 @@ require "dotenv/load"
 Minitest::Reporters.use!
 
 # ensure the environment is available
-class DefaultEnvironmentTest < MiniTest::Unit::TestCase
+class DefaultEnvironmentTest < MiniTest::Test
   def test_default_environment
     assert_equal "test", ENV["TEST_VALUE"]
   end

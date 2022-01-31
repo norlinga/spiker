@@ -27,31 +27,31 @@ module Spiker
         name_in_snake_case = Spiker.snake_case(name)
         name_as_class = Spiker.classify(name)
         opts = { name_as_class: name_as_class, name_in_snake_case: name_in_snake_case }
-        template("multi_app_test.rb.erb", "#{name}/test/#{name_in_snake_case}_test.rb", opts)
-        template("multi_test_helper.rb", "#{name}/test/test_helper.rb", opts)
+        template("app_test.rb.erb", "#{name}/test/#{name_in_snake_case}_test.rb", opts)
+        template("test_helper.rb", "#{name}/test/test_helper.rb", opts)
       end
 
       def create_app_files
         name_in_snake_case = Spiker.snake_case(name)
         opts = { name_as_class: Spiker.classify(name) }
-        template("multi_app.rb.erb", "#{name}/lib/#{name_in_snake_case}.rb", opts)
+        template("app.rb.erb", "#{name}/lib/#{name_in_snake_case}.rb", opts)
       end
 
       def create_guard_file
-        template("multi_guardfile.rb", "#{name}/Guardfile")
+        template("guardfile.rb", "#{name}/Guardfile")
       end
 
       def create_gem_file
-        template("multi_gemfile.rb", "#{name}/Gemfile")
+        template("gemfile.rb", "#{name}/Gemfile")
       end
 
       def create_rake_file
-        template("multi_rakefile.rb", "#{name}/Rakefile")
+        template("rakefile.rb", "#{name}/Rakefile")
       end
 
       def create_readme_file
         opts = { name_as_class: Spiker.classify(name), name: name }
-        template("multi_readme.md.erb", "#{name}/README.md", opts)
+        template("readme.md.erb", "#{name}/README.md", opts)
       end
 
       def create_env_file
