@@ -51,7 +51,11 @@ end
 
 From here, the user should be able to start Guard and immediately begin development in a red-green fashion.
 
-The "multi" option places directories and files into a named directory, and is intended to flesh out a more complex spike that includes a tests directory and `test_helper.rb`, a `lib` directory, README.md, etc.  The overall workflow is still the same:
+## Types of Spikes
+
+The `simple` option shown above puts the code and the tests together in a single file, which can be useful in a number of circumstances.  Similar to the `simple` option, the `given` option puts the code and tests in the same file but offers the user the Minitest::Spec and ::Given syntax options.  Learn more about the [Given/When/Then](https://en.wikipedia.org/wiki/Given-When-Then) syntax on Wikipedia, or the work of Jim Weirich related to Rspec with [Given](https://github.com/jimweirich/rspec-given).
+
+The `multi` option places directories and files into a named directory, and is intended to flesh out a more complex spike that includes a tests directory and `test_helper.rb`, a `lib` directory, README.md, etc.  The overall workflow is still the same:
 
     $ spiker multi my_spike
     $ cd my_spike
