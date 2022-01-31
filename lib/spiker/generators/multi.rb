@@ -14,7 +14,7 @@ module Spiker
       argument :name, type: :string
 
       def self.source_root
-        "#{File.dirname(__FILE__)}/templates"
+        "#{File.dirname(__FILE__)}/templates/multi"
       end
 
       def create_spike_directories
@@ -55,7 +55,7 @@ module Spiker
       end
 
       def create_env_file
-        template("basic.env", "#{name}/.env")
+        template("../common/basic.env", "#{name}/.env")
       end
 
       def run_bundler
