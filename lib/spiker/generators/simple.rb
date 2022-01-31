@@ -22,15 +22,15 @@ module Spiker
 
       def create_spike_file
         opts = { name_as_class: Spiker.classify(name) }
-        template("simple_app.rb.erb", "#{name}/app.rb", opts)
+        template("app.rb.erb", "#{name}/app.rb", opts)
       end
 
       def create_guard_file
-        template("simple_guardfile.rb", "#{name}/Guardfile")
+        template("guardfile.rb", "#{name}/Guardfile")
       end
 
       def create_gem_file
-        template("simple_gemfile.rb", "#{name}/Gemfile")
+        template("gemfile.rb", "#{name}/Gemfile")
       end
 
       def create_env_file
