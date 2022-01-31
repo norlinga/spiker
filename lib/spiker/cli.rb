@@ -6,9 +6,11 @@ require_relative "generators/simple"
 require_relative "generators/multi"
 
 module Spiker
-  # Accept options "single" and "multi"
-  # for single-file spikes or multi-file spikes
-  # and a name for the spike directory.  That is all
+  # Accept options "simple", "given", or "multi".
+  # Both Simple and Given create "single file" spikes
+  # with the tests and spike code in a single file.
+  # The Multi option creates a more traditionally structured
+  # spike directory with tests, code, README, etc.  That is all.
   class CLI < Thor
     desc "version", "Show version"
     def version
@@ -19,6 +21,12 @@ module Spiker
     method_option :name, type: :string, aliases: "-n", desc: "Name of the spike"
     def simple(name)
       Spiker::Generators::Simple.start([name])
+    end
+
+    desc "given NAME", "Spike in a single file using Given syntax"
+    method_option :name, type: :string, aliases: "-n", desc: "Name of the spike"
+    def given(name)
+      Spiker::Generators::Given.start([name])
     end
 
     desc "multi NAME", "Spike over multiple files"
