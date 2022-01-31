@@ -7,7 +7,7 @@ module Spiker
   module Generators
     # Generates a single spike file, with supporting infrastructure.
     # For simpler spikes that don't need a ton of organization.
-    class Given < Thor::Group
+    class GivenOption < Thor::Group
       include Thor::Actions
 
       argument :name, type: :string
