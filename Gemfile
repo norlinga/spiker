@@ -7,12 +7,14 @@ gemspec
 
 gem "rake", "~> 13.0"
 
-gem "minitest", "~> 5.0"
-gem "minitest-reporters", "~> 1.0"
+group :development, :test do
+  gem "minitest", "~> 5.0"
+  gem "minitest-reporters", "~> 1.0"
 
-gem "guard", "~> 2.18.0"
-gem "guard-minitest", "~> 2.4.0"
+  gem "guard", "~> 2.18.0"
+  gem "guard-minitest", "~> 2.4.0"
 
-gem "rubocop", "~> 0.93.0"
+  gem "rubocop", "~> 1.60"
+end
 
-gem "thor", "~> 0.20.0"
+gem "thor", "~> 1.3"

@@ -12,3 +12,5 @@ gem "guard"
 gem "guard-minitest"
 
 gem "dotenv"
+
+gem "rubocop"

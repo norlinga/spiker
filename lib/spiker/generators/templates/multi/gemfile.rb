@@ -9,3 +9,5 @@ gem "minitest-reporters"
 gem "guard"
 gem "guard-minitest"
 gem "dotenv"
+
+gem "rubocop"

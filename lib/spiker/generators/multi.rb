@@ -26,7 +26,7 @@ module Spiker
       def create_test_files
         name_in_snake_case = Spiker.snake_case(name)
         name_as_class = Spiker.classify(name)
-        opts = { name_as_class: name_as_class, name_in_snake_case: name_in_snake_case }
+        opts = { name_as_class:, name_in_snake_case: }
         template("app_test.rb.erb", "#{name}/test/#{name_in_snake_case}_test.rb", opts)
         template("test_helper.rb", "#{name}/test/test_helper.rb", opts)
       end
@@ -50,7 +50,7 @@ module Spiker
       end
 
       def create_readme_file
-        opts = { name_as_class: Spiker.classify(name), name: name }
+        opts = { name_as_class: Spiker.classify(name), name: }
         template("readme.md.erb", "#{name}/README.md", opts)
       end
 
