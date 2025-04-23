@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "bundler"
+
 require "thor"
 require "thor/group"
 
