@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
-class <%= config[:name_as_class] %>Test < MiniTest::Test
+class <%= config[:name_as_class] %>Test < Minitest::Test
   def test_default_class_instantiates
     assert <%= config[:name_as_class] %>.new
   end

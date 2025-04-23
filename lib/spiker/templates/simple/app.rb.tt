@@ -1,0 +1,31 @@
+# frozen_string_literal: true
+
+require "dotenv/load"
+require "minitest"
+require "minitest/autorun"
+require "minitest/reporters"
+
+Minitest::Reporters.use!
+
+# Test for the class that's also defined in this file (look below).
+# The two tests here are just "smoke tests" to make sure everything
+# is wired up correctly.  From the command line, run:
+#  $ bundle exec guard
+class <%= config[:name_as_class] %>Test < Minitest::Test
+  def test_name
+    assert_equal "Fred", <%= config[:name_as_class] %>.new(name: "Fred").name
+  end
+
+  def test_default_env_value
+    assert_equal "test", ENV["TEST_VALUE"]
+  end
+end
+
+# Spike your ideas here.
+class <%= config[:name_as_class] %>
+  attr_accessor :name
+
+  def initialize(name:)
+    @name = name
+  end
+end

@@ -1,67 +1,42 @@
 # frozen_string_literal: true
 
-require "thor/group"
-require_relative "../../spiker"
-
 module Spiker
   module Generators
     # Generates multiple spike files, seperating tests from the
     # tested code.  For when the spike gets too hairy for a single
     # file.
-    class Multi < Thor::Group
-      include Thor::Actions
-
-      argument :name, type: :string
-
-      def self.source_root
-        "#{File.dirname(__FILE__)}/templates/multi"
-      end
-
-      def create_spike_directories
-        empty_directory(name)
-        empty_directory("#{name}/lib")
-        empty_directory("#{name}/test")
-      end
-
-      def create_test_files
-        name_in_snake_case = Spiker.snake_case(name)
-        name_as_class = Spiker.classify(name)
-        opts = { name_as_class:, name_in_snake_case: }
-        template("app_test.rb.erb", "#{name}/test/#{name_in_snake_case}_test.rb", opts)
-        template("test_helper.rb", "#{name}/test/test_helper.rb", opts)
+    class Multi < BaseGenerator
+      def create_additional_spike_directories
+        empty_directory("#{spike_name}/lib")
+        empty_directory("#{spike_name}/test")
       end
 
       def create_app_files
-        name_in_snake_case = Spiker.snake_case(name)
-        opts = { name_as_class: Spiker.classify(name) }
-        template("app.rb.erb", "#{name}/lib/#{name_in_snake_case}.rb", opts)
+        template("#{generator_name}/app.rb.tt",
+                 "#{spike_name}/lib/#{multi_options[:name_in_snake_case]}.rb", multi_options)
       end
 
-      def create_guard_file
-        template("guardfile.rb", "#{name}/Guardfile")
-      end
-
-      def create_gem_file
-        template("gemfile.rb", "#{name}/Gemfile")
+      def create_test_files
+        template("#{generator_name}/app_test.rb.tt",
+                 "#{spike_name}/test/#{multi_options[:name_in_snake_case]}_test.rb", multi_options)
+        template("#{generator_name}/test_helper.rb.tt", "#{spike_name}/test/test_helper.rb", multi_options)
       end
 
       def create_rake_file
-        template("rakefile.rb", "#{name}/Rakefile")
+        template("#{generator_name}/Rakefile.tt", "#{spike_name}/Rakefile")
       end
 
       def create_readme_file
-        opts = { name_as_class: Spiker.classify(name), name: }
-        template("readme.md.erb", "#{name}/README.md", opts)
+        template("#{generator_name}/README.md.tt", "#{spike_name}/README.md", multi_options)
       end
 
-      def create_env_file
-        template("../common/basic.env", "#{name}/.env")
-      end
+      private
 
-      def run_bundler
-        inside(name) do
-          run("bundle install")
-        end
+      def multi_options
+        @multi_options ||= {
+          name_as_class: Spiker.classify(spike_name),
+          name_in_snake_case: Spiker.snake_case(spike_name)
+        }
       end
     end
   end

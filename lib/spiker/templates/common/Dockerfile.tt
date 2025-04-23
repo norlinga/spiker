@@ -1,0 +1,18 @@
+FROM ruby:3.4.3-slim
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Install dependencies (e.g., node, if needed by Guard or other tools)
+RUN apt-get update -qq && apt-get install -y \
+  build-essential
+
+# Copy Gemfiles first to install gems separately (cache layer)
+COPY Gemfile* ./
+RUN bundle install
+
+# Copy rest of your project files
+COPY . .
+
+# Set entrypoint to Bash for dev container
+CMD [ "bash" ]

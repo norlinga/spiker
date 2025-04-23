@@ -1,0 +1,11 @@
+build:
+	docker-compose build
+
+shell:
+	docker-compose run --rm app bash
+
+guard:
+	docker-compose run --rm app bundle exec guard
+
+test: # alias to guard
+	guard

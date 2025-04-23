@@ -1,0 +1,31 @@
+# frozen_string_literal: true
+
+require "dotenv/load"
+require "minitest"
+require "minitest/autorun"
+require "minitest/reporters"
+require "minitest/given"
+
+Minitest::Reporters.use!
+
+# Test for the class that's also defined in this file (look below).
+# The two tests here are just "smoke tests" to make sure everything
+# is wired up correctly.  From the command line, run:
+#  $ bundle exec guard
+describe "When Initializing a <%= config[:name_as_class] %>" do
+  context "Named Fred" do
+    Given(:fred) { <%= config[:name_as_class] %>.new(name: "Fred") }
+    Then {
+      expect(fred.name).must_equal "Fred"
+    }
+  end
+end
+
+# Spike your ideas here.
+class <%= config[:name_as_class] %>
+  attr_accessor :name
+
+  def initialize(name:)
+    @name = name
+  end
+end
