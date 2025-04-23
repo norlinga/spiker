@@ -9,7 +9,7 @@ require "spiker/base_generator"
 require "spiker/generators/simple"
 require "spiker/generators/given"
 require "spiker/generators/multi"
-# require "spiker/generators/rspec"
+require "spiker/generators/rspec"
 require "spiker/cli"
 
 # Spiker is a simple spike generator.

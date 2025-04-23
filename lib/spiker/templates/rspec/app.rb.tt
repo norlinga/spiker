@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+require "dotenv/load"
+
+# Spike your ideas here
+class <%= config[:name_as_class] %>
+  def self.hello
+    "Hello, world!"
+  end
+end

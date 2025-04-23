@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+require "rspec"
+require "dotenv/load"
+
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require "<%= config[:name_in_snake_case] %>"
+
+RSpec.configure do |config|
+  config.example_status_persistence_file_path = ".rspec_status"
+  config.disable_monkey_patching!
+end

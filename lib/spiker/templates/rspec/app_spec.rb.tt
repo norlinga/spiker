@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+require "spec_helper"
+
+RSpec.describe <%= config[:name_as_class] %> do
+  it "gives a cheerful greeting" do
+    expect(<%= config[:name_as_class] %>.hello).to eq("Hello, world!")
+  end
+end

@@ -31,11 +31,10 @@ module Spiker
       Spiker::Generators::Multi.new([spike_name], generator_options).invoke_all
     end
 
-    # TODO: Implement Rspec generator
-    # desc "rspec NAME", "Spike using Rspec over multiple files"
-    # def rspec(name)
-    #   Spiker::Generators::Rspec.start([name])
-    # end
+    desc "rspec NAME", "Spike using Rspec over multiple files"
+    def rspec(spike_name)
+      Spiker::Generators::Rspec.new([spike_name], generator_options).invoke_all
+    end
 
     private
 

@@ -52,11 +52,9 @@ module Spiker
       end
 
       inside(spike_name) do
-        gemfile_path = File.expand_path("Gemfile")
-        env = { "BUNDLE_GEMFILE" => gemfile_path }
-
-        say "📦 Running bundler with BUNDLE_GEMFILE=#{gemfile_path}", :blue
-        system(env, "bundle install")
+        Bundler.with_unbundled_env do
+          system("bundle install")
+        end
       end
     end
 
