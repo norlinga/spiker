@@ -17,7 +17,7 @@ class <%= config[:name_as_class] %>Test < Minitest::Test
   end
 
   def test_default_env_value
-    assert_equal "test", ENV["TEST_VALUE"]
+    assert_equal "test", ENV.fetch("TEST_VALUE", nil)
   end
 end
 

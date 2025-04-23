@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.files = Dir["lib/**/*.rb"] + Dir["lib/spiker/templates/**/*"]
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "thor", "~> 1.3"

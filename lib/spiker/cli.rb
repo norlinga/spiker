@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-require "thor"
-require "thor/group"
-require_relative "base_generator"
-require_relative "generators/simple"
-require_relative "generators/given"
-require_relative "generators/multi"
-
 module Spiker
   # Accept options "simple", "given", "multi", or "rspec".
   # Both Simple and Given create "single file" spikes

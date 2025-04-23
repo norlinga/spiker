@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "thor/group"
-
 module Spiker
   # BaseGenerator handles the common steps for all generators, including allowing for
   # several feature skips. Inherited this generator - not to be used directly.
