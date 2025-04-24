@@ -21,7 +21,12 @@ Then, create a new spike:
     $ spiker simple my_spike
     $ cd my_spike
 
-Using the "simple" formula, Spiker will create an `app.rb` file, a `Gemfile`, a `Guardfile` and an `.env` file for configuration, to be read by the `dotenv` gem.  The `app.rb` file will contain boilerplate for both Minitest and a Ruby class in the same file:  
+Using the "simple" formula, Spiker will create an `app.rb` file, a `Gemfile`, a `Guardfile` and an `.env` file for configuration, to be read by the `dotenv` gem.
+By default, Spiker will also create `Dockerfile` and `docker-compose.yml` files and a `Makefile` to make it easier to work with Docker.
+These files, along with automatic Bundle'ing and Git init'ing can be turned off with skip directives on the command line.
+Run `$ spiker help` for more details.
+
+The `app.rb` file will contain boilerplate for both Minitest and a Ruby class in the same file:  
 
 ```ruby
 require 'dotenv/load'
@@ -61,6 +66,8 @@ The `multi` option places directories and files into a named directory, and is i
     $ cd my_spike
 
 Bundle will run automatically and the user will be able to start development in a red-green fashion just the same as with the simple spike.  There is also a Rakefile provided, the Guardfile is modified from the simple version to include files in directories, and simple tests are predefined.
+
+The `rspec` option is closely related to `multi`, but allows testing in Rspec versus Minitest and adapts directory and file names to use the `spec/` conventions.
 
 ## Development
 
