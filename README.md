@@ -188,8 +188,6 @@ Run `spiker help` or `spiker help [COMMAND]` to see all your options.
 
 ---
 
-
-
 ## 💪 Development
 
 Spiker is a straightforward "generator"-style Ruby gem.
@@ -205,7 +203,7 @@ lib/spiker/templates/<YOUR_GENERATOR_TEMPLATES_HERE>
 
 Adapting an existing spike just requires attention to the last two items above.
 
-To get rolling, check out the repo and run `bundle exev bin/setup` to install dependencies.
+To get rolling, check out the repo and run `bundle exec bin/setup` to install dependencies.
 Then, run `rake test` to run the tests.
 You can also run `bundle exec bin/console` for an interactive prompt that will allow you to experiment.
 
