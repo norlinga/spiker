@@ -35,8 +35,8 @@ module Spiker
     end
 
     def create_docker_files
-      if options[:skip_docker]
-        say "🛑 Skipping Dockerfile and docker-compose.yml generation (--skip-docker was passed)", :yellow
+      if skip_step?(:docker)
+        say "➖ Skipping Dockerfile and docker-compose.yml generation (--skip-docker was passed)", :yellow
         return if options[:skip_docker]
       end
 
@@ -46,8 +46,8 @@ module Spiker
     end
 
     def run_bundle_install
-      if options[:skip_bundle]
-        say "🛑 Skipping bundle install (--skip-bundle was passed)", :yellow
+      if skip_step?(:bundle)
+        say "➖ Skipping bundle install (--skip-bundle was passed)", :yellow
         return
       end
 
@@ -59,13 +59,20 @@ module Spiker
     end
 
     def run_git_init
-      if options[:skip_git]
-        say "🛑 Skipping git init (--skip-git was passed)", :yellow
+      if skip_step?(:git)
+        say "➖ Skipping git init (--skip-git was passed)", :yellow
         return
       end
 
       say "📦 Running `git init`...", :green
       inside(File.join(destination_root, spike_name)) { run "git init" }
+    end
+
+    private
+
+    def skip_step?(step)
+      # here we ensure the step skips if the user specifies or if the environment is test
+      options[:"skip_#{step}"] || ENV["RACK_ENV"] == "test" || ENV["SPIKER_ENV"] == "test"
     end
   end
 end
