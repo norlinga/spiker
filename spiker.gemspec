@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["me@aaronware.com"]
 
   spec.summary       = "Properly spike your Ruby"
-  spec.description   = "Scaffold for code spikes, includes simple boilerplate with Minitest or Rspec + Guard to make red/green work out-of-the-box."
+  spec.description   = "Scaffold for code spikes, includes simple boilerplate with Minitest or RSpec + Guard to make red/green work out-of-the-box."
   spec.homepage      = "http://github.com/norlinga/spiker"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
@@ -30,9 +30,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.files = Dir["lib/**/*.rb"] + Dir["lib/spiker/templates/**/*"]
 
-  # Uncomment to register a new dependency of your gem
   spec.add_dependency "thor", "~> 1.3"
-
-  # For more information and examples about making a new gem, checkout our
-  # guide at: https://bundler.io/guides/creating_gem.html
 end

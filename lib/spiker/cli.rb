@@ -31,7 +31,7 @@ module Spiker
       Spiker::Generators::Multi.new([spike_name], generator_options).invoke_all
     end
 
-    desc "rspec NAME", "Spike using Rspec over multiple files"
+    desc "rspec NAME", "Spike using RSpec over multiple files"
     def rspec(spike_name)
       Spiker::Generators::Rspec.new([spike_name], generator_options).invoke_all
     end

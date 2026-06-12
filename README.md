@@ -1,59 +1,48 @@
-# 🧪 Spiker
+# Spiker
 
-**Spiker** helps you spin up quick, testable Ruby experiments, aka *spikes*.
-Whether you're validating an idea, poking at a new API, or just noodling with some code, Spiker gives you a clean, red-green workflow in seconds.
+Spiker scaffolds small, testable Ruby experiments — *spikes*. It generates a
+working red-green setup (Minitest or RSpec, plus Guard) in seconds, so you can
+validate an idea or explore an API without writing boilerplate first.
 
-It’s like `rails new` for code spikes.
+Think of it as `rails new` for code spikes.
 
 [![Gem Version](https://badge.fury.io/rb/spiker.svg)](https://badge.fury.io/rb/spiker)
 
----
-
-## 🚀 Install
-
-Get Spiker the same way you get any other Ruby gem:
+## Installation
 
 ```sh
 gem install spiker
 ```
 
----
+## Usage
 
-## 🛠️ Use It
-
-Navigate to wherever you keep your brilliant ideas:
+Navigate to wherever you keep your experiments and create a spike:
 
 ```sh
-cd ~/spikes
+spiker simple my_idea
+cd my_idea
 ```
 
-Then create your first Spiker-flavored spike:
+Then start Guard and work in a red-green loop:
 
 ```sh
-spiker simple my_rad_idea
-cd my_rad_idea
+bundle exec guard
 ```
 
-Start coding. Run tests. Celebrate small wins. 🎉
-
----
-
-## 🧬 Spike Types
-
-Spiker gives you different formats depending on your mood:
+## Spike Types
 
 ### `simple`
 
-All code and tests in **one file**. Perfect for one-off ideas or sharing snippets with others.
+All code and tests in one file. Good for one-off ideas or sharing snippets.
 
 ```sh
-spiker simple my_rad_idea
+spiker simple my_idea
 ```
 
 Generates:
 
 ```
-my_rad_idea/
+my_idea/
 ├── app.rb
 ├── Gemfile
 ├── Guardfile
@@ -63,9 +52,10 @@ my_rad_idea/
 ├── Makefile*
 ```
 
-\* Skippable via `--skip-docker`, `--skip-bundle`, etc.
+\* Skippable — see [Options](#options).
 
-The `app.rb` file includes your class, a few tests, and support for `.env` values:
+The `app.rb` file includes a starter class, a few tests, and support for
+`.env` values:
 
 ```ruby
 require 'minitest'
@@ -74,9 +64,9 @@ require 'minitest/reporters'
 
 Minitest::Reporters.use!
 
-class MyRadIdeaTest < Minitest::Test
+class MyIdeaTest < Minitest::Test
   def test_name
-    assert_equal "Fred", MySpike.new(name: "Fred").name
+    assert_equal "Fred", MyIdea.new(name: "Fred").name
   end
 
   def test_default_env_value
@@ -84,8 +74,7 @@ class MyRadIdeaTest < Minitest::Test
   end
 end
 
-# your brilliance goes here
-class MyRadIdea
+class MyIdea
   attr_accessor :name
 
   def initialize(name:)
@@ -94,34 +83,26 @@ class MyRadIdea
 end
 ```
 
-Start Guard and hack away:
-
-```sh
-bundle exec guard
-```
-
----
-
 ### `given`
 
-Like `simple`, but with support for `Minitest::Spec` and `Given/When/Then` style tests. Inspired by the late, great Jim Weirich.
+Like `simple`, but uses `Minitest::Spec` with Given/When/Then style tests.
+Inspired by the late, great Jim Weirich.
 
 ```sh
 spiker given my_given_spike
 ```
 
----
-
 ### `multi`
 
-When you need more structure — say you're testing something big, or just like folders.
+A multi-file layout for spikes that need more structure. Minitest is the test
+framework, Rake is wired up, and Guard watches your files.
 
 ```sh
 spiker multi cool_tool
 cd cool_tool
 ```
 
-You get:
+Generates:
 
 ```
 cool_tool/
@@ -133,23 +114,18 @@ cool_tool/
 ├── Gemfile
 ├── Rakefile
 ├── README.md
-...etc
 ```
-
-Minitest is still the test framework. Rake is wired up. Guard watches your files. You're all set.
-
----
 
 ### `rspec`
 
-Like `multi`, but for people who write `describe` instead of `def test_thing`. 🐹
+Like `multi`, but with RSpec.
 
 ```sh
 spiker rspec spike_it
 cd spike_it
 ```
 
-You’ll get:
+Generates:
 
 ```
 spike_it/
@@ -162,37 +138,30 @@ spike_it/
 ├── Rakefile
 ```
 
-Just add ideas and run `bundle exec guard` or `rake` or... `rspec`.
+Run tests with `bundle exec guard`, `rake`, or `rspec`.
 
----
+## Options
 
-## ⚙️ Options
-
-Want fewer moving parts?
+Each generator supports flags to skip pieces you don't need:
 
 ```sh
 spiker simple my_spike --skip-docker --skip-bundle --skip-git
 ```
 
-Run `spiker help` or `spiker help [COMMAND]` to see all your options.
+Run `spiker help` or `spiker help [COMMAND]` to see all options.
 
----
+## Why Spiker?
 
-## 💡 Why Use Spiker?
+- **Fast** — from idea to testable code in seconds, no boilerplate by hand
+- **Familiar** — Minitest, RSpec, Guard, Rake: tools you already know
+- **Simple** — no configuration or meta-generators
+- **Docker-ready** — edit locally, run in a container if you like
+- **Flexible** — pick the spike format that fits the task
 
-- ✅ Fast: From idea to testable code in seconds and no boring boilerplate by hand
-- ✅ Familiar: Minitest, RSpec, Guard, Rake — tools you already know... or want to know
-- ✅ Simple: No weird configs or meta-generators
-- ✅ Docker-Ready: Write code in your favorite editor, run your code in Docker? Intriguing...
-- ✅ Flexible: Choose the spike format that fits your flow
+## Development
 
----
-
-## 💪 Development
-
-Spiker is a straightforward "generator"-style Ruby gem.
-It uses Thor to handle the bulk of the generator heavy lifting, so it will be straightforward to adapt to your needs.
-If you want to make a new style of "spike", you'll work in:
+Spiker is a generator-style Ruby gem built on Thor. To add a new spike type,
+work in:
 
 ```sh
 lib/spiker.rb
@@ -201,21 +170,15 @@ lib/spiker/generators/<YOUR_GENERATOR_HERE>
 lib/spiker/templates/<YOUR_GENERATOR_TEMPLATES_HERE>
 ```
 
-Adapting an existing spike just requires attention to the last two items above.
+Adapting an existing spike type only requires changes to the last two.
 
-To get rolling, check out the repo and run `bundle exec bin/setup` to install dependencies.
-Then, run `rake test` to run the tests.
-You can also run `bundle exec bin/console` for an interactive prompt that will allow you to experiment.
+To get started, check out the repo and run `bundle exec bin/setup` to install
+dependencies. Run `rake test` to run the tests, or `bundle exec bin/console`
+for an interactive prompt. To install your local version of the gem, run
+`bundle exec rake install`. For everything else, see `bundle exec rake -T`.
 
-To install your updated version of the gem onto your local machine, run `bundle exec rake install`.
-To see what else you can do, there's always `bundle exec rake -T`
+## License
 
----
+Spiker is open source, released under the [MIT License](LICENSE.txt).
 
-## 🧼 Fine Print
-
-Spiker is open source, MIT-licensed, and built for fun and function.
-
-Use it. Fork it. Spike responsibly.
-
-→ [https://github.com/norlinga/spiker](https://github.com/norlinga/spiker)
+[https://github.com/norlinga/spiker](https://github.com/norlinga/spiker)
